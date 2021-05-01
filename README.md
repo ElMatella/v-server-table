@@ -5,6 +5,8 @@ This is an extension of the great vuetify datatable. It allows you to control se
 ## Demo
 [![Edit Vuetify Playground (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vuetify-playground-forked-y8omg?fontsize=14&hidenavigation=1&module=%2Fsrc%2Flayout.vue&theme=dark)
 
+Or just go to https://y8omg.csb.app/ (not sure if this works, try the CodeSandbox button instead if it does not)
+
 ## Installation
 ```
 yarn add @hammerbot/v-server-table
