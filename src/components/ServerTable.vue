@@ -45,7 +45,6 @@
 
 <script>
 import debounce from 'lodash.debounce'
-// import {VSkeletonLoader, VDataTable, VAlert, VSpacer, VBtn, VIcon} from 'vuetify/lib'
 
 export default {
   props: {
@@ -146,95 +145,6 @@ export default {
         await this.debounceFn()
       }
     }
-  },
-  /**
-  render (h) {
-    if (this.items === null && !this.error) {
-      return h(VSkeletonLoader, {
-        props: {
-          type: 'table'
-        }
-      })
-    }
-
-    const getScopedSlots = () => {
-      if (!this.error) {
-        return this.$scopedSlots
-      }
-
-      return {
-        'body': () => {
-          const errorMessage = this.error && this.error.message ? this.error.message : this.error
-          const alert = h(VAlert, {
-            props: {
-              type: 'error'
-            },
-            class: 'my-4',
-          }, [errorMessage, h(VSpacer), h('template', {
-            slot: 'append'
-          }, [
-            h(VBtn, {
-              props: {
-                icon: true
-              },
-              class: 'ml-2',
-              on: {
-                click: () => {
-                  this.fetch()
-                }
-              }
-            }, [
-              h(VIcon, ['refresh'])
-            ])
-          ])])
-
-          return h('tr', [
-              h('td', {
-                attrs: {
-                  colspan: this.$attrs.headers.length
-                }
-              }, [
-                  h('div', {
-                    class: 'd-flex justify-center',
-                  }, [alert])
-              ])
-          ])
-        }
-      }
-    }
-
-    // https://stackoverflow.com/questions/50891858/vue-how-to-pass-down-slots-inside-wrapper-component
-    const children = Object.keys(this.$slots).map(slot => h('template', { slot }, this.$slots[slot]))
-
-    return h(VDataTable, {
-      attrs: {
-        ...this.$attrs
-      },
-      props: {
-        items: this.items || [],
-        itemsPerPage: this.size,
-        page: this.page,
-        loading: this.loading,
-        serverItemsLength: this.total,
-        footerProps: {
-          itemsPerPageOptions: this.paginationOptions
-        },
-        loaderHeight: 2
-      },
-      on: {
-        ...this.$listeners,
-        'update:items-per-page': (e) => {
-          this.size = e
-        },
-        'update:page': (e) => {
-          this.page = e
-        }
-      },
-      scopedSlots: {
-        ...getScopedSlots()
-      },
-    }, children)
   }
-  */
 }
 </script>

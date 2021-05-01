@@ -1,0 +1,22 @@
+name: Deploy to npm package registry
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@68745b36f06428d175b5aec775a41540ac1788aa"
+        with:
+          tag-prefix: 'v'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Bump version and push tag
+      #   uses: anothrNick/github-tag-action@1.26.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     WITH_V: true
+      #     DEFAULT_BUMP: patch
