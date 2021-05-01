@@ -1,8 +1,9 @@
-DISCLAIMER: This package has not even been tested by me yet. So just don't pull it into your project yet, it won't work for sure. Anyways have a great day!
-
 # vuetify-server-table
 
 This is an extension of the great vuetify datatable. It allows you to control server side pagination really easily.
+
+## Demo
+[![Edit Vuetify Playground (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vuetify-playground-forked-y8omg?fontsize=14&hidenavigation=1&theme=dark)
 
 ## Installation
 ```
