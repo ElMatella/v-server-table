@@ -3,7 +3,7 @@
 This is an extension of the great vuetify datatable. It allows you to control server side pagination really easily.
 
 ## Demo
-[![Edit Vuetify Playground (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vuetify-playground-forked-y8omg?fontsize=14&hidenavigation=1&theme=dark)
+[![Edit Vuetify Playground (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vuetify-playground-forked-y8omg?fontsize=14&hidenavigation=1&module=%2Fsrc%2Flayout.vue&theme=dark)
 
 ## Installation
 ```
@@ -21,7 +21,11 @@ Then, use it in a Vue component:
 </template>
 
 <script>
+import VServerTable from '@hammerbot/v-server-table'
 export default {
+  components: {
+    VServerTable
+  },
   data () {
     return {
       headers: [
