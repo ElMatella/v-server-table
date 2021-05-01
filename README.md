@@ -1,24 +1,84 @@
 # vuetify-server-table
 
-## Project setup
+This is an extension of the great vuetify datatable. It allows you to control server side pagination really easily.
+
+## Installation
 ```
-yarn install
+yarn add @hammerbot/v-server-table
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+Then, use it in a Vue component:
+
+```vue
+<template>
+    <v-server-table
+      :fetch-fn="fetchFn"
+      :headers="headers"
+    />
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      headers: [
+        {
+          value: 'id',
+          text: 'ID'
+        },
+        {
+          value: 'title',
+          text: 'Title'
+        }
+      ]
+    }
+  },
+  methods: {
+    async fetchFn ({ size, page, search }) {
+      // Insert your server side logic here using size, page and search parameters
+      const { data } = await this.$api.get('/articles', {
+        params: {
+          size,
+          page,
+          search
+        }
+      })
+      
+      // Return an object following this structure:
+      // -> hits: Contains the items of the current page
+      // -> total: Contains the number of total items you are iterating over
+      // -> page: The current page
+      // -> size: The size fetched.
+      return {
+        hits: data.hits,
+        total: data.total,
+        page,
+        size
+      }
+    }
+  }
+}
+</script>
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+## Configuration
+
+This component wraps the original [`v-data-table`](https://vuetifyjs.com/en/api/v-data-table/) component. Check out its [official documentation](https://vuetifyjs.com/en/api/v-data-table/) to find the options you are looking for.
+
+### Pagination Options
+The only added prop allows you to control more easily the pagination options:
+
+```vue
+<template>
+    <v-server-table
+      :fetch-fn="fetchFn"
+      :headers="headers"
+      :pagination-options="[10, 20, 50, 200]"
+    />
+</template>
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+Defaults to `[25, 50, 100, 200, 500]`
+## Behaviour
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The component uses lodash debounce function to trigger server side fetching only once in 500ms. The component takes care of the orchestration of the requests. You don't have to wait for a fetch to finish in order to continue navigating between pages.
