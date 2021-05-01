@@ -11,7 +11,7 @@ jobs:
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@e3cde4e376147b58cfa38832db31e73bb214266e"
         with:
-          tag-prefix: 'v'
+          tag-prefix: ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Bump version and push tag
