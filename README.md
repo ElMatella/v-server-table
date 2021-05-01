@@ -2,6 +2,9 @@
 
 This is an extension of the great vuetify datatable. It allows you to control server side pagination really easily.
 
+## Demo
+[![Edit Vuetify Playground (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vuetify-playground-forked-y8omg?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Installation
 ```
 yarn add @hammerbot/v-server-table
