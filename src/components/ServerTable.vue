@@ -94,6 +94,7 @@ export default {
     },
     search: {
       handler () {
+        this.page = 1
         this.fetch()
       }
     }

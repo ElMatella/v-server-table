@@ -5,11 +5,18 @@
       color="primary"
     >
     </v-app-bar>
-
     <v-main>
       <div class="pa-10">
+        <div class="d-flex">
+          <v-spacer />
+          <v-text-field
+            label="Search"
+            v-model="search"
+          ></v-text-field>
+        </div>
         <server-table
           :headers="headers"
+          :search="search"
           :fetch-fn="fetch1"
           dense
           class="mb-4"
@@ -119,7 +126,8 @@ export default {
       ],
       fetch1,
       fetchErrorOnSecondPage,
-      fetchErrorOnFirstPage
+      fetchErrorOnFirstPage,
+      search: null
     }
   }
 };
