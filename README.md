@@ -88,6 +88,7 @@ The only added prop allows you to control more easily the pagination options:
 ```
 
 Defaults to `[25, 50, 100, 200, 500]`
+
 ## Behaviour
 
 The component uses lodash debounce function to trigger server side fetching only once in 500ms. The component takes care of the orchestration of the requests. You don't have to wait for a fetch to finish in order to continue navigating between pages.
