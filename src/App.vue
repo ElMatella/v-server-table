@@ -14,36 +14,83 @@
             v-model="search"
           ></v-text-field>
         </div>
-        <server-table
-          :headers="headers"
-          :search="search"
-          :fetch-fn="fetch1"
-          dense
-          class="mb-4"
-        >
-          <template #item.id="{ item }">
-            {{ item.id }} Templated
-          </template>
-        </server-table>
-        <server-table
-            :headers="headers"
-            :fetch-fn="fetchErrorOnFirstPage"
-            dense
-            class="mb-4"
-        >
-          <template #item.id="{ item }">
-            {{ item.id }} Templated
-          </template>
-        </server-table>
-        <server-table
-            :headers="headers"
-            :fetch-fn="fetchErrorOnSecondPage"
-            dense
-        >
-          <template #item.id="{ item }">
-            {{ item.id }} Templated
-          </template>
-        </server-table>
+        <v-tabs>
+          <v-tab>
+            Tables
+          </v-tab>
+          <v-tab>
+            Iterators
+          </v-tab>
+          <v-tab-item>
+            <server-table
+                :headers="headers"
+                :search="search"
+                :fetch-fn="fetch1"
+                dense
+                class="mb-4"
+            >
+              <template #item.id="{ item }">
+                {{ item.id }} Templated
+              </template>
+            </server-table>
+            <server-table
+                :headers="headers"
+                :fetch-fn="fetchErrorOnFirstPage"
+                dense
+                class="mb-4"
+            >
+              <template #item.id="{ item }">
+                {{ item.id }} Templated
+              </template>
+            </server-table>
+            <server-table
+                :headers="headers"
+                :fetch-fn="fetchErrorOnSecondPage"
+                dense
+            >
+              <template #item.id="{ item }">
+                {{ item.id }} Templated
+              </template>
+            </server-table>
+          </v-tab-item>
+          <v-tab-item>
+            <server-iterator
+                :headers="headers"
+                :search="search"
+                :fetch-fn="fetch1"
+                dense
+                class="mb-4"
+            >
+              <template #item="{ item }">
+                <v-card>
+                  {{ item.id }} Templated
+                </v-card>
+              </template>
+            </server-iterator>
+            <server-iterator
+                :headers="headers"
+                :fetch-fn="fetchErrorOnFirstPage"
+                dense
+                class="mb-4"
+            >
+              <template #item="{ item }">
+                {{ item.id }} Templated
+              </template>
+            </server-iterator>
+            <server-iterator
+                :headers="headers"
+                :fetch-fn="fetchErrorOnSecondPage"
+                dense
+            >
+              <template #item="{ item }">
+                <v-card>
+                  {{ item.id }} Templated
+                </v-card>
+              </template>
+            </server-iterator>
+          </v-tab-item>
+        </v-tabs>
+
       </div>
     </v-main>
   </v-app>
@@ -51,6 +98,7 @@
 
 <script>
 import ServerTable from "./components/ServerTable";
+import ServerIterator from "@/components/ServerIterator";
 import _ from 'lodash'
 
 const fetch1 = async ({ page, size }) => {
@@ -109,7 +157,8 @@ const fetchErrorOnFirstPage = async ({ page, size }) => {
 
 export default {
   components: {
-    ServerTable
+    ServerTable,
+    ServerIterator
   },
   name: 'App',
   data () {
