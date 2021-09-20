@@ -1,2 +1,7 @@
 import ServerTable from "./src/components/ServerTable";
-export default ServerTable
+import ServerIterator from "@/components/ServerIterator";
+
+export default {
+  ServerTable,
+  ServerIterator
+}
