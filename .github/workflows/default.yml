@@ -14,11 +14,11 @@ jobs:
           tag-prefix: ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: 'lib'
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-          # - run: yarn --production
-      - run: npm publish
+      - run: cp README.md lib/README.md && cd lib && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

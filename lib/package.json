@@ -1,0 +1,27 @@
+{
+  "name": "@hammerbot/v-server-table",
+  "version": "3.0.0",
+  "private": false,
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "peerDependencies": {
+    "vue": "2.*",
+    "vuetify": "2.*"
+  },
+  "main": "src/index.js"
+}

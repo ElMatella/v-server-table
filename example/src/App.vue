@@ -97,8 +97,7 @@
 </template>
 
 <script>
-import ServerTable from "./components/ServerTable";
-import ServerIterator from "@/components/ServerIterator";
+import {VServerTable, VServerIterator} from "@hammerbot/v-server-table";
 import _ from 'lodash'
 
 const fetch1 = async ({ page, size }) => {
@@ -157,8 +156,8 @@ const fetchErrorOnFirstPage = async ({ page, size }) => {
 
 export default {
   components: {
-    ServerTable,
-    ServerIterator
+    ServerTable: VServerTable,
+    ServerIterator: VServerIterator
   },
   name: 'App',
   data () {
