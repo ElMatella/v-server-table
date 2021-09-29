@@ -88,6 +88,15 @@
                 </v-card>
               </template>
             </server-iterator>
+            <server-iterator
+                :headers="headers"
+                :fetch-fn="fetchEmptyResult"
+                dense
+            >
+              <template #empty>
+                This is completely empty
+              </template>
+            </server-iterator>
           </v-tab-item>
         </v-tabs>
 
@@ -154,6 +163,15 @@ const fetchErrorOnFirstPage = async ({ page, size }) => {
   return result
 }
 
+const fetchEmptyResult = async () => {
+  return {
+    page: 1,
+    size: 10,
+    total: 0,
+    hits: []
+  }
+}
+
 export default {
   components: {
     ServerTable: VServerTable,
@@ -175,6 +193,7 @@ export default {
       fetch1,
       fetchErrorOnSecondPage,
       fetchErrorOnFirstPage,
+      fetchEmptyResult,
       search: null
     }
   }

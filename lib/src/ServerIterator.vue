@@ -5,9 +5,10 @@
         type="table"
         class="mx-auto"
     />
-    <v-alert v-else-if="items === null && error" type="error" class="my-4">
+    <v-alert v-else-if="items === null" type="error" class="my-4">
       {{ error }}
     </v-alert>
+    <slot v-else-if="!items.length" name="empty"></slot>
     <v-data-iterator
         v-else
         v-bind="$attrs"
